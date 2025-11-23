@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iris-app-deployment
+spec:
+  replicas: 2                      # run 2 copies of your app
+  selector:
+    matchLabels:
+      app: iris-app
+  template:                        # this defines the Pod
+    metadata:
+      labels:
+        app: iris-app
+    spec:
+      containers:
+        - name: iris-container
+          image: dcom93/ana680-iris-final:latest   
+          ports:
+            - containerPort: 5000                  
